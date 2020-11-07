@@ -1,5 +1,5 @@
-
-<div style="width: 30vw;">
-
-    <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+<div style="width: 30vw">
+  <p>your nick is : {{ userNickName | async }}</p>
+  <app-userName></app-userName>
+  <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
 </div>
