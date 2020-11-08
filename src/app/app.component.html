@@ -1,5 +1,11 @@
-<div style="width: 30vw">
-  <p>your nick is : {{ userNickName | async }}</p>
-  <app-userName></app-userName>
-  <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+<div class="row">
+  <div class="col-md-2">
+    <h3 *ngIf="userNickName | async">
+      your nick is : {{ userNickName | async }}
+    </h3>
+    <app-userName></app-userName>
+  </div>
+  <div class="col-md-8">
+    <app-post-list></app-post-list>
+  </div>
 </div>
