@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">Post list</div>
+
+  <div class="card-body" *ngIf="postList">
+    <div class="list-group">
+      <button
+        class="list-group-item list-group-item-action rounded-0"
+        *ngFor="let post of postList"
+        [ngClass]="{ active: post?.id === selectedPost?.id }"
+        (click)="viewPost(post)"
+      >
+        {{ post.title }}
+      </button>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="col-md-4 text-right">
+      <button
+        class="btn btn-primary"
+        [disabled]="!(userNickName | async)"
+        (click)="newPost()"
+      >
+        Create new post
+      </button>
+    </div>
+  </div>
+</div>
