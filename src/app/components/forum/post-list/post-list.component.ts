@@ -20,16 +20,19 @@ export class PostListComponent implements OnInit {
     private userService: UserService
   ) {}
   ngOnInit(): void {
+    // get from the store the value of the nickname and the selected post
     this.userNickName = this.userService.userName;
     this.selectedPost = this.postService.selectedPost;
   }
 
   viewPost(post: PostModel) {
     if (post) {
+      // update the selected post in the store
       this.postService.selectedPost.next(post);
     }
   }
   newPost() {
+    // call the store for create a new post
     this.postService.createNewPost();
   }
 }
