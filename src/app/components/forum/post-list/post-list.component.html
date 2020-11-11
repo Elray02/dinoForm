@@ -6,7 +6,7 @@
       <button
         class="list-group-item list-group-item-action rounded-0"
         *ngFor="let post of postList"
-        [ngClass]="{ active: post?.id === selectedPost?.id }"
+        [ngClass]="{ active: post?.id === (selectedPost | async)?.id }"
         (click)="viewPost(post)"
       >
         {{ post.title }}
@@ -18,7 +18,7 @@
     <div class="col-md-4 text-right">
       <button
         class="btn btn-primary"
-        [disabled]="!(userNickName | async)"
+        [disabled]="(userNickName | async) ? false : true"
         (click)="newPost()"
       >
         Create new post
