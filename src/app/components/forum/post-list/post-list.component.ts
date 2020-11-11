@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { PostModel } from 'src/app/model/post.model';
 import { PostService } from 'src/app/post.service';
-import { UserService } from 'src/app/UserService.service';
+import { UserService } from 'src/app/User.service';
 
 @Component({
   selector: 'app-post-list',
@@ -10,22 +10,26 @@ import { UserService } from 'src/app/UserService.service';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-  userNickName: Subject<string>;
-  postList: PostModel[];
-  selectedPost: PostModel;
+  @Input() postList: PostModel[] = [];
+  userNickName: Observable<string>;
+  author = '';
+
+  selectedPost: Subject<PostModel>;
   constructor(
-    private userservice: UserService,
-    private postService: PostService
+    private postService: PostService,
+    private userService: UserService
   ) {}
   ngOnInit(): void {
-    this.userNickName = this.userservice.userName;
-    this.postList = this.postService.generatePost();
+    this.userNickName = this.userService.userName;
+    this.selectedPost = this.postService.selectedPost;
   }
 
   viewPost(post: PostModel) {
-    this.selectedPost = post;
+    if (post) {
+      this.postService.selectedPost.next(post);
+    }
   }
   newPost() {
-    console.log('create a new post');
+    this.postService.createNewPost();
   }
 }
