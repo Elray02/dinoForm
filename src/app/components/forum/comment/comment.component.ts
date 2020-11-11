@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { CommentModel } from 'src/app/model/comment.model';
-import { PostService } from 'src/app/post.service';
+
+import { PostService } from '../../../post.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CommentModel } from '../../../model/comment.model';
 
 @Component({
   selector: 'app-comment',

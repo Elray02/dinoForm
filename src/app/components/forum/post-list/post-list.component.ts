@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { PostModel } from 'src/app/model/post.model';
-import { PostService } from 'src/app/post.service';
-import { UserService } from 'src/app/User.service';
+import { PostModel } from '../../../model/post.model';
+import { PostService } from '../../../post.service';
+import { UserService } from '../../../User.service';
 
 @Component({
   selector: 'app-post-list',

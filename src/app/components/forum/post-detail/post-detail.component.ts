@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { PostModel } from 'src/app/model/post.model';
-import { PostService } from 'src/app/post.service';
+import { PostModel } from '../../../model/post.model';
+import { PostService } from '../../../post.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from 'src/app/User.service';
+import { UserService } from '../../../User.service';
 
 @Component({
   selector: 'app-post-detail',
