@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PostModel } from './model/post.model';
 import * as faker from 'faker';
 import { Observable, of, ReplaySubject, Subject } from 'rxjs';
-import { UserService } from './User.service';
+import { UserService } from './user.service';
 import { CommentModel } from './model/comment.model';
 
 @Injectable({

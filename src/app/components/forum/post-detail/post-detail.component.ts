@@ -5,7 +5,7 @@ import { PostModel } from '../../../model/post.model';
 import { PostService } from '../../../post.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../../User.service';
+import { UserService } from '../../../user.service';
 
 @Component({
   selector: 'app-post-detail',

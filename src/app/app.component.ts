@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Subject } from 'rxjs';
-import { UserService } from './User.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
