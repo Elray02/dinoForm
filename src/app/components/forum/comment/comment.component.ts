@@ -9,20 +9,12 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
 })
-export class CommentComponent implements OnInit, OnChanges {
+export class CommentComponent {
   @Input() inputComment: CommentModel;
   public Editor = ClassicEditor;
   constructor(private postService: PostService) {}
 
-  ngOnInit() {}
-
-  ngOnChanges() {
-    console.log(this.inputComment);
-  }
-
   save(comment: CommentModel) {
-    console.log(comment);
-
     this.postService.updateComment(comment);
   }
 }
