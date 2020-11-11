@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 import { Subject } from 'rxjs';
-import { UserService } from './UserService.service';
+import { UserService } from './User.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,6 @@ import { UserService } from './UserService.service';
 })
 export class AppComponent implements OnInit {
   title = 'dinoForm';
-  public Editor = ClassicEditor;
   userNickName: Subject<string>;
   constructor(private userservice: UserService) {}
   ngOnInit(): void {
