@@ -1,0 +1,32 @@
+<div class="card" *ngIf="inputComment as comment">
+  <div class="card-body">
+    <div class="row">
+        <h5>Created by:{{ comment.author }} </h5>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <ckeditor
+          [editor]="Editor"
+          rows="3"
+          [(ngModel)]="comment.text"
+          [disabled]="comment.id !== ''"
+        ></ckeditor>
+      </div>
+    </div>
+    <div>
+      <div class="col-md-10 col-md-offset-2">
+        <span>
+          <button
+            class="btn btn-primary"
+            (click)="save(comment)"
+            style="width: 80px; margin-right: 10px"
+            *ngIf="comment.id === ''"
+          >
+            Save
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
