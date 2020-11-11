@@ -1,0 +1,75 @@
+<div class="card" *ngIf="postSelected | async as post">
+  <div class="card-header">
+    {{ pageTitle }}
+    <span>
+      Posted by
+      <span style="font-weight: bold"> {{ post.author }} </span>
+    </span>
+  </div>
+  <div class="card-body">
+    <form novalidate [formGroup]="postForm">
+      <fieldset>
+        <div class="form-group">
+          <label class="col-md-3 col-form-label" for="productNameId"
+            >Post Title</label
+          >
+          <div class="col-md-9">
+            <input
+              class="form-control"
+              id="productNameId"
+              type="text"
+              placeholder="post title (required)"
+              [readonly]="post.id !== '' ? true : false"
+              formControlName="title"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-9">
+            <ckeditor
+              [editor]="Editor"
+              formControlName="content"
+              rows="3"
+              [disabled]="post.id !== '' ? true : false"
+            ></ckeditor>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-6 col-md-offset-2">
+            <span>
+              <button
+                class="btn btn-primary"
+                type="submit"
+                style="width: 80px; margin-right: 10px"
+                *ngIf="post.id === ''"
+                (click)="savePost(post)"
+              >
+                Save
+              </button>
+            </span>
+          </div>
+          <div class="col-md-6 col-md-offset-2">
+            <span>
+              <button
+                class="btn btn-info"
+                [disabled]="
+                  (userNickName | async) && post.id !== '' ? false : true
+                "
+                (click)="addComment(post)"
+              >
+                Add Comment
+              </button>
+            </span>
+          </div>
+        </div>
+        <ng-container *ngIf="post.comments.length > 0">
+          <div *ngFor="let comment of post.comments">
+            <app-comment [inputComment]="comment"></app-comment>
+          </div>
+        </ng-container>
+      </fieldset>
+    </form>
+  </div>
+</div>
